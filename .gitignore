@@ -1,0 +1,6 @@
+.venv/
+uji_luar/
+uji_luar.py
+uji_resize.py
+__pycache__/
+*.pyc
