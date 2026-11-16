@@ -5,6 +5,7 @@ from pathlib import Path
 import numpy as np
 import tensorflow as tf
 from fastapi import FastAPI, File, UploadFile
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from PIL import Image, UnidentifiedImageError
 
@@ -23,6 +24,14 @@ if motif_path.exists():
         motif_data = json.load(f)
 
 app = FastAPI(title="ScanTik Pekalongan API")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_headers=["*"],
+    allow_credentials=False,
+)
 
 
 def error(message: str, code: int):
